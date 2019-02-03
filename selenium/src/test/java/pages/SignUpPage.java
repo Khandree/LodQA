@@ -3,12 +3,11 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class SignUpPage {
+public class SignUpPage extends BasePage{
 
     public SignUpPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super (driver);
     }
 
     @FindBy(id = "usernamesignup")

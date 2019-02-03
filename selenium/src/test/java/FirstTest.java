@@ -41,14 +41,13 @@ public class FirstTest {
 
     @Test
     public void openContactPageTest(){
-        WebElement servicesLink = driver.findElement(By.cssSelector("a[href=\"contact.html\"]"));
-        servicesLink.click();
-        WebElement servicesPageHeader = driver.findElement(By.xpath("//div[@class=\"page-header\"]/h1"));
-        String servicesPageHeaderText = servicesPageHeader.getText();
+        WebElement contactLink = driver.findElement(By.cssSelector("a[href=\"contact.html\"]"));
+        contactLink.click();
+        WebElement contactPageHeader = driver.findElement(By.xpath("//div[@class=\"page-header\"]/h1"));
+        String contactPageHeaderText = contactPageHeader.getText();
         String expectedText = "Contact";
-        Assert.assertEquals(servicesPageHeaderText, expectedText);
+        Assert.assertEquals(contactPageHeaderText, expectedText);
         WebElement nameInput = driver.findElement(By.id("name"));
-        //nameInput.click();
         nameInput.sendKeys("Kopytko");
         WebElement emailInput = driver.findElement(By.id("email"));
         emailInput.sendKeys("kopytko@kopytko.pl");
