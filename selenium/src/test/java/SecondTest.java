@@ -1,31 +1,8 @@
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
-import pages.ContactPage;
-import pages.HomePage;
-import pages.SignUpPage;
-import utils.WebDriverSingleton;
 
-public class SecondTest {
-
-    private WebDriver driver;
-    HomePage homePage;
-    SignUpPage signUpPage;
-    ContactPage contactPage;
-
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\LisMarciniaA\\Desktop\\LodQA\\jak-to-sie-robi-z-webdriver\\selenium\\drivers\\chromedriver.exe");
-        driver = WebDriverSingleton.getInstance();
-        driver.manage().window().maximize();
-        driver.get("http://jacekokrojek.github.io/jak-to-zrobic-w-js/");
-        homePage = new HomePage(driver);
-        signUpPage = new SignUpPage(driver);
-        contactPage = new ContactPage(driver);
-    }
+public class SecondTest extends TestBase{
 
     @Test
     public void popTest() {
@@ -47,8 +24,4 @@ public class SecondTest {
         Assert.assertEquals(returnMessage, expectedMessage);
     }
 
-    @After
-    public void tearDown() {
-        WebDriverSingleton.quit();
-    }
 }

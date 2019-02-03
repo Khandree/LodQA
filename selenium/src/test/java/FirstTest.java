@@ -1,26 +1,11 @@
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class FirstTest {
-
-    private WebDriver driver;
-
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\LisMarciniaA\\Desktop\\LodQA\\jak-to-sie-robi-z-webdriver\\selenium\\drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://jacekokrojek.github.io/jak-to-zrobic-w-js/");
-
-    }
+public class FirstTest extends TestBase {
 
     @Test
     public void pageTitleTest() {
@@ -30,7 +15,7 @@ public class FirstTest {
     }
 
     @Test
-    public void openNewPageTest(){
+    public void openNewPageTest() {
         WebElement servicesLink = driver.findElement(By.cssSelector("a[href=\"service.html\"]"));
         servicesLink.click();
         WebElement servicesPageHeader = driver.findElement(By.tagName("h1"));
@@ -40,7 +25,7 @@ public class FirstTest {
     }
 
     @Test
-    public void openContactPageTest(){
+    public void openContactPageTest() {
         WebElement contactLink = driver.findElement(By.cssSelector("a[href=\"contact.html\"]"));
         contactLink.click();
         WebElement contactPageHeader = driver.findElement(By.xpath("//div[@class=\"page-header\"]/h1"));
@@ -61,10 +46,5 @@ public class FirstTest {
         WebElement successMessage = driver.findElement(By.cssSelector(".message h3"));
         String successMessageText = successMessage.getText();
         Assert.assertEquals(successMessageText, expectedMessage);
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }
