@@ -43,7 +43,7 @@ public class ContactPage extends BasePage {
 
     public String waitForSubmitToFinish(WebDriver driver, String expectedMessage) {
         waitForTextToBePresentInElement(successMessage, expectedMessage);
-        String successMessageText = successMessage.getText();
+        String successMessageText = getTextFromElement(successMessage);
         return successMessageText;
     }
 }
