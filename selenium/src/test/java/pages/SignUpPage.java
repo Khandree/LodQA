@@ -1,23 +1,32 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SignUpPage {
 
-    private WebDriver driver;
-
-
     public SignUpPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
+    @FindBy(id = "usernamesignup")
+    private WebElement usernameInput;
+
+    @FindBy(id = "emailsignup")
+    private WebElement emailInput;
+
+    @FindBy(id = "passwordsignup")
+    private WebElement passwordInput;
+
+    @FindBy(id = "passwordsignup_confirm")
+    private WebElement passwordConfirmInput;
+
+    @FindBy(css = "a[type=\"button\"]")
+    private WebElement submitButton;
+
     public void fillInForm(String username, String email, String password, String passConfirm) {
-        WebElement usernameInput = driver.findElement(By.id("usernamesignup"));
-        WebElement emailInput = driver.findElement(By.id("emailsignup"));
-        WebElement passwordInput = driver.findElement(By.id("passwordsignup"));
-        WebElement passwordConfirmInput = driver.findElement(By.id("passwordsignup_confirm"));
         usernameInput.sendKeys(username);
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
@@ -25,7 +34,6 @@ public class SignUpPage {
     }
 
     public void submitForm() {
-        WebElement submitButton = driver.findElement(By.cssSelector("a[type=\"button\"]"));
         submitButton.click();
     }
 }
