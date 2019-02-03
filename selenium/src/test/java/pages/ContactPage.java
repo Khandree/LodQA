@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.WebDriverSingleton;
 
 import static utils.Actions.*;
 
@@ -29,21 +30,27 @@ public class ContactPage extends BasePage {
     private WebElement submitButton;
 
     @FindBy(css = ".message h3")
-    private WebElement successMessage;
+    private WebElement confirmationMessage;
 
-    public void fillInContactForm(String name, String email, String message) {
+    public ContactPage fillInContactForm(String name, String email, String message) {
         sendKeys(nameInput, name);
         sendKeys(emailInput, email);
         sendKeys(messageInput, message);
+        return new ContactPage(WebDriverSingleton.getInstance());
     }
 
-    public void submitForm() {
+    public ContactPage submitForm() {
         click(submitButton);
+        return this;
     }
 
-    public String waitForSubmitToFinish(WebDriver driver, String expectedMessage) {
-        waitForTextToBePresentInElement(successMessage, expectedMessage);
-        String successMessageText = getTextFromElement(successMessage);
-        return successMessageText;
+    public ContactPage waitForConfirmationMessage(){
+        String expectedMessage = "Your message has been sent.";
+        waitForTextToBePresentInElement(confirmationMessage, expectedMessage);
+        return this;
+    }
+
+    public String getConfirmationText(){
+        return getTextFromElement(confirmationMessage);
     }
 }

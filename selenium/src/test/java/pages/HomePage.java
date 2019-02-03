@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.WebDriverSingleton;
 
 import static utils.Actions.click;
 
@@ -16,13 +17,14 @@ public class HomePage extends BasePage {
     private WebElement signUpTodayButton;
 
     @FindBy(css = "a[href=\"contact.html\"]")
-    private WebElement contactLink;
+    private WebElement contactPageLink;
 
     public void clickSingUpTodayButton() {
         click(signUpTodayButton);
     }
 
-    public void clickContactLink() {
-        click(contactLink);
+    public ContactPage openContactPage() {
+        click(contactPageLink);
+        return new ContactPage(WebDriverSingleton.getInstance());
     }
 }
