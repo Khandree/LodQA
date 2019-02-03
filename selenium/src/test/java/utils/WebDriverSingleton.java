@@ -13,8 +13,8 @@ public class WebDriverSingleton {
 
     public static WebDriver getInstance(){
         if(null==driver){
-            WebDriverManager.firefoxdriver().setup();
-            driver=new FirefoxDriver();
+            WebDriverManager.chromedriver().setup();
+            driver=new ChromeDriver();
         }
         return driver;
     }
