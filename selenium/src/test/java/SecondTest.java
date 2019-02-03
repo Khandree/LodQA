@@ -19,7 +19,7 @@ public class SecondTest {
     @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\LisMarciniaA\\Desktop\\LodQA\\jak-to-sie-robi-z-webdriver\\selenium\\drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = WebDriverSingleton.getInstance();
         driver.manage().window().maximize();
         driver.get("http://jacekokrojek.github.io/jak-to-zrobic-w-js/");
         homePage = new HomePage(driver);
@@ -49,6 +49,6 @@ public class SecondTest {
 
     @After
     public void tearDown() {
-        driver.quit();
+        WebDriverSingleton.quit();
     }
 }
