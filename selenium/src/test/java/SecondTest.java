@@ -3,11 +3,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import pages.ContactPage;
 import pages.HomePage;
 import pages.SignUpPage;
+import utils.WebDriverSingleton;
 
 public class SecondTest {
 

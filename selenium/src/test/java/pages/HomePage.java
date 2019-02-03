@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static utils.Actions.click;
+
 public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
@@ -17,10 +19,10 @@ public class HomePage extends BasePage {
     private WebElement contactLink;
 
     public void clickSingUpTodayButton() {
-        signUpTodayButton.click();
+        click(signUpTodayButton);
     }
 
     public void clickContactLink() {
-        contactLink.click();
+        click(contactLink);
     }
 }
